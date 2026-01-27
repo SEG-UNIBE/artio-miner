@@ -26,7 +26,24 @@ go.work.sum
 
 # env file
 .env
+*.env
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# IDE Files
+.idea/
+.idea
+.vscode/
+.vscode
+*.iml
+
+# Misc Files
+TODO.md
+
+# Python
+*.venv"
+.venv
+
+*.ipynb_checkpoints
+
+queries/
+*.pdf
+

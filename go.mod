@@ -1,4 +1,4 @@
-module github.com/SEG-UNIBE/artio-insight/relay-miner
+module github.com/SEG-UNIBE/artio-miner/
 
 go 1.24.1
 

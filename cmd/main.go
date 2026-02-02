@@ -5,8 +5,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/SEG-UNIBE/artio-insight/relay-miner/pkg/miner"
-	"github.com/SEG-UNIBE/artio-insight/relay-miner/pkg/storage"
+	"github.com/SEG-UNIBE/artio-miner/pkg/miner"
+	"github.com/SEG-UNIBE/artio-miner/pkg/storage"
 	"github.com/joho/godotenv"
 )
 

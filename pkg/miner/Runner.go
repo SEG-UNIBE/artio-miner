@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/SEG-UNIBE/artio-insight/relay-miner/pkg/helper"
+	"github.com/SEG-UNIBE/artio-miner/pkg/helper"
 )
 
 /*

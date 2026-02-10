@@ -7,7 +7,7 @@ import (
 	"net"
 	"strings"
 
-	"github.com/SEG-UNIBE/artio-insight/relay-miner/pkg/helper"
+	"github.com/SEG-UNIBE/artio-miner/pkg/helper"
 	"github.com/nbd-wtf/go-nostr"
 	"github.com/nbd-wtf/go-nostr/nip11"
 )

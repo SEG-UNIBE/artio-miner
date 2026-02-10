@@ -3,7 +3,7 @@ package miner
 import (
 	"sync"
 
-	"github.com/SEG-UNIBE/artio-insight/relay-miner/pkg/storage"
+	"github.com/SEG-UNIBE/artio-miner/pkg/storage"
 )
 
 /*

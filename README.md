@@ -6,3 +6,9 @@
 [![GitHub release date](https://img.shields.io/github/release-date/SEG-UNIBE/artio-miner.svg)](https://github.com/SEG-UNIBE/artio-miner/releases)
 
 ## Actions
+[![CI](https://github.com/SEG-UNIBE/artio-miner/actions/workflows/artio_miner_docker_build.yml/badge.svg)](https://github.com/SEG-UNIBE/artio-miner/actions/workflows/artio_miner_docker_build.yml)
+[![CI](https://github.com/SEG-UNIBE/artio-miner/actions/workflows/artio_miner_docker_build_publish_development.yml/badge.svg)](https://github.com/SEG-UNIBE/artio-miner/actions/workflows/artio_miner_docker_build_publish_development.yml)
+[![CI](https://github.com/SEG-UNIBE/artio-miner/actions/workflows/artio_miner_docker_build_publish_main.yml/badge.svg)](https://github.com/SEG-UNIBE/artio-miner/actions/workflows/artio_miner_docker_build_publish_main.yml)
+[![CI](https://github.com/SEG-UNIBE/artio-miner/actions/workflows/artio_miner_test.yml/badge.svg)](https://github.com/SEG-UNIBE/artio-miner/actions/workflows/artio_miner_test.yml)
+
+![artio-relay](https://raw.githubusercontent.com/SEG-UNIBE/artio-relay/refs/heads/main/identity/logo_box.svg)

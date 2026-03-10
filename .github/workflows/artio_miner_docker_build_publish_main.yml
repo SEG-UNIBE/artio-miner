@@ -1,4 +1,4 @@
-name: Docker build and push on development branch
+name: Docker build and push on main branch
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -13,7 +13,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: SEG-UNIBE/artio-miner
+  IMAGE_NAME: ${{ github.repository }}
 
 
 jobs:

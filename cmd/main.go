@@ -29,6 +29,11 @@ func main() {
 	maxRunners, _ := strconv.ParseInt(os.Getenv("MAX_RUNNERS"), 10, 64)
 	pushUsers, _ := strconv.ParseBool(os.Getenv("PUSH_USERS"))
 	exportCommand := os.Getenv("EXPORT_COMMAND")
+	maxMessageLimit, _ := strconv.ParseInt(os.Getenv("MAX_MESSAGE_FETCH_LIMIT"), 10, 64)
+
+	if maxMessageLimit == 0 {
+		maxMessageLimit = 10000
+	}
 
 	neo := storage.Neo4jInstance{Username: username, Password: password, URI: uri, DBName: db}
 	err = neo.Init()
@@ -39,7 +44,7 @@ func main() {
 	_ = neo.Clean()
 
 	defer neo.Close()
-	manager := miner.Manager{Neo: &neo, MaxRecursion: int(maxRecursion), MaxRunners: int(maxRunners), PushUsers: pushUsers, ExportCommand: exportCommand}
+	manager := miner.Manager{Neo: &neo, MaxRecursion: int(maxRecursion), MaxRunners: int(maxRunners), PushUsers: pushUsers, ExportCommand: exportCommand, MaxMessageCount: maxMessageLimit}
 
 	manager.Run(startingRelays)
 

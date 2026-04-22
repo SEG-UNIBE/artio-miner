@@ -28,6 +28,7 @@ type RelayMiner struct {
 	InvalidReason    string
 	DetectedBy       *RelayMiner
 	RecursionLevel   int
+	MaxMessageCount  int64
 }
 
 func (rm *RelayMiner) Load() {
@@ -104,7 +105,7 @@ LoadRelayLists Load the NIP-11 Result into the object
 */
 func (rm *RelayMiner) LoadRelayLists() {
 	address := fmt.Sprintf("%v", rm.Relay)
-	result, err := GetRelayList(address)
+	result, err := GetRelayList(address, rm.MaxMessageCount)
 	if err != nil {
 		log.Printf("error occured: %s\n", err)
 		return

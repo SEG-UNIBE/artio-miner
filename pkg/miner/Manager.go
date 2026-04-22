@@ -11,16 +11,17 @@ Manager is the main object to handle the mining process
 holds the neo4j instance and the list of miners with some results for for handling recursion
 */
 type Manager struct {
-	Neo           *storage.Neo4jInstance
-	MaxRecursion  int
-	miners        []*RelayMiner
-	loadMap       map[string]bool
-	mapMutex      sync.RWMutex
-	RelayQueue    *Queue
-	MaxRunners    int
-	runners       []*Runner
-	PushUsers     bool
-	ExportCommand string
+	Neo             *storage.Neo4jInstance
+	MaxRecursion    int
+	miners          []*RelayMiner
+	loadMap         map[string]bool
+	mapMutex        sync.RWMutex
+	RelayQueue      *Queue
+	MaxRunners      int
+	runners         []*Runner
+	PushUsers       bool
+	ExportCommand   string
+	MaxMessageCount int64
 }
 
 /*
@@ -41,6 +42,7 @@ func (mgmt *Manager) Run(relays []string) {
 	for _, relay := range relays {
 		newMiner := NewMiner(relay)
 		newMiner.RecursionLevel = mgmt.MaxRecursion
+		newMiner.MaxMessageCount = mgmt.MaxMessageCount
 		mgmt.miners = append(mgmt.miners, newMiner)
 	}
 

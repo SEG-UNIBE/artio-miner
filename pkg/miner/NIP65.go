@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/signal"
 	"slices"
+	"strconv"
 	"syscall"
 	"time"
 
@@ -16,7 +17,7 @@ import (
 /*
 GetRelayList fetches all the Events of Type 10002 from the relay
 */
-func GetRelayList(address string) ([]*nostr.Event, error) {
+func GetRelayList(address string, maxMessageAmount int64) ([]*nostr.Event, error) {
 	interrupt := make(chan os.Signal, 1)
 	eventList := make([]*nostr.Event, 0)
 	signal.Notify(interrupt, os.Interrupt)
@@ -73,7 +74,9 @@ func GetRelayList(address string) ([]*nostr.Event, error) {
 		}
 	}()
 
-	err = c.WriteMessage(websocket.TextMessage, []byte("[\"REQ\", \"1\", {\"kinds\": [10002], \"limit\": 10000}]"))
+	requestString := "[\"REQ\", \"1\", {\"kinds\": [10002], \"limit\": " + strconv.FormatInt(maxMessageAmount, 10) + "}]"
+
+	err = c.WriteMessage(websocket.TextMessage, []byte(requestString))
 	if err != nil {
 		log.Println("write:", err)
 	}

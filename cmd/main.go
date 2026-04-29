@@ -14,6 +14,7 @@ import (
 main example function for just fetching the data from the relays
 */
 func main() {
+	log.Println("artio-miner is starting up for you :)")
 	startingRelays := []string{"wss://relay.artiostr.ch/", "wss://relay.artio.inf.unibe.ch/"}
 	miners := make([]*miner.RelayMiner, 0)
 	for _, relay := range startingRelays {
@@ -44,6 +45,7 @@ func main() {
 	_ = neo.Clean()
 
 	defer neo.Close()
+	defer log.Println("Thanks for running the artio-miner :)")
 	manager := miner.Manager{Neo: &neo, MaxRecursion: int(maxRecursion), MaxRunners: int(maxRunners), PushUsers: pushUsers, ExportCommand: exportCommand, MaxMessageCount: maxMessageLimit}
 
 	manager.Run(startingRelays)

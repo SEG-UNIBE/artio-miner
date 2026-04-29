@@ -1,6 +1,7 @@
 package miner
 
 import (
+	"log"
 	"sync"
 
 	"github.com/SEG-UNIBE/artio-miner/pkg/storage"
@@ -30,6 +31,7 @@ the relays are processed in parallel and the information stored in the database
 please pay attention to the recursion level to avoid overloading the database with too many requests
 */
 func (mgmt *Manager) Run(relays []string) {
+	log.Println("Manager is started")
 	mgmt.loadMap = make(map[string]bool)
 	mgmt.mapMutex = sync.RWMutex{}
 	mgmt.RelayQueue = new(Queue)
@@ -51,10 +53,12 @@ func (mgmt *Manager) Run(relays []string) {
 		mgmt.RelayQueue.Enqueue(relay)
 	}
 
+	log.Printf("Manager is starting %d runners\n", mgmt.MaxRunners)
 	for i := range mgmt.MaxRunners {
 		runner := Runner{Manager: mgmt, Id: i}
 		mgmt.runners = append(mgmt.runners, &runner)
 	}
+	log.Println("Manager is starting the runners")
 	mgmt.StartAll()
 
 	for !mgmt.RelayQueue.IsEmpty() || mgmt.AnyNonIdleRunner() {

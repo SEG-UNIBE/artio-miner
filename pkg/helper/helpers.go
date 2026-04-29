@@ -16,6 +16,10 @@ func CleanRelayName(name string) string {
 	name = strings.ReplaceAll(name, "wss://", "")
 	name = strings.ReplaceAll(name, "http://", "")
 	name = strings.ReplaceAll(name, "https://", "")
+	index := strings.Index(name, "/")
+	if index != -1 {
+		name = name[:index]
+	}
 	name = strings.ReplaceAll(name, "/", "")
 	name = strings.ReplaceAll(name, " ", "")
 	name = strings.ReplaceAll(name, "\t", "")

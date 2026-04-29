@@ -24,6 +24,8 @@ func TestCleanRelayName(t *testing.T) {
 		{name: "CleanRelayName2", args: args{"ws://relay.relay.com/"}, want: "relay.relay.com"},
 		{name: "CleanRelayName3", args: args{"wss://relay.relay.com"}, want: "relay.relay.com"},
 		{name: "CleanRelayName3", args: args{"ws://relay.relay.com"}, want: "relay.relay.com"},
+		{name: "CleanRelayName4", args: args{"ws://relay.relay.com/zulu"}, want: "relay.relay.com"},
+		{name: "CleanRelayName5", args: args{"ws://relay.relay.com/zulu/test"}, want: "relay.relay.com"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
